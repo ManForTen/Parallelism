@@ -1,9 +1,6 @@
 import multiprocessing
-import sys
 import threading
-import time
 import os
-
 import matrix_dot
 
 queue = multiprocessing.Queue()

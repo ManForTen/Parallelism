@@ -3,7 +3,7 @@ import random
 import time
 
 import filelock
-# import numpy as np
+import numpy as np
 
 SIZE = 10
 FILE = "matrix.txt"
@@ -36,7 +36,7 @@ def time_it(func):
     def wrapper(*args, **kwargs):
         start = time.time()
         result = func(*args, **kwargs)
-#        print(f"{func.__name__}:", time.time() - start)
+        print(f"{func.__name__}:", time.time() - start)
         return result
 
     return wrapper
@@ -70,15 +70,14 @@ def clear_file():
         pass
 
 
-# def check_result(a, b):
-#     empty = zeroes(SIZE, SIZE)
-#     with open(FILE, mode="r", encoding="utf-8") as f:
-#         for line in f:
-#             if line:
-#                 i, j, res = line.strip().split()
-#                 empty[int(i)][int(j)] = float(res)
-#
-#         print("Validated:", np.all(np.array(empty).round(4) == np.dot(np.array(a), np.array(b)).round(4)))
+def check_result(a, b):
+    empty = zeroes(SIZE, SIZE)
+    with open(FILE, mode="r", encoding="utf-8") as f:
+        for line in f:
+            if line:
+                i, j, res = line.strip().split()
+                empty[int(i)][int(j)] = float(res)
+        print("Validated:", np.all(np.array(empty).round(4) == np.dot(np.array(a), np.array(b)).round(4)))
 
 
 if __name__ == '__main__':
@@ -87,7 +86,5 @@ if __name__ == '__main__':
         m1 = random_fill(SIZE, SIZE)
         m2 = random_fill(SIZE, SIZE)
         parallel_calc(m1, m2, write_locking)
-
-        # consistently_calc(m1, m2, write_locking)
-
-        # check_result(m1, m2)
+        consistently_calc(m1, m2, write_locking)
+        check_result(m1, m2)
