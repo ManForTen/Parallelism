@@ -6,7 +6,6 @@ import matrix_dot
 queue = multiprocessing.Queue()
 is_working = multiprocessing.Event()
 
-
 def parallel_gen(size):
     while is_working.is_set():
         queue.put(matrix_dot.random_fill(size, size))
