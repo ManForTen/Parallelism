@@ -67,7 +67,7 @@ if __name__ == '__main__':
     parallel_calc(m1, m2, write_locking)
     consistently_calc(m1, m2, write_locking)
     file = open("matrix.txt")
-    print(f'Матрица {SIZE} на {SIZE}')
+    print(f'Размер матриц {SIZE} на {SIZE}')
     print('Результат:')
     print(file.read())
 
